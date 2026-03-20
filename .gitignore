@@ -1,0 +1,23 @@
+# Binaries
+*.exe
+*.out
+*.o
+
+# Go build files
+bin/
+dist/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+
+# Environment
+.env
+
+# Docker
+*.pid
+
+# Redis dump
+dump.rdb

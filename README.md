@@ -24,61 +24,7 @@ It mimics systems like Kubernetes Job Controllers and message queue systems (Rab
 
 🏗️ Architecture
 
-                    ┌─────────────────────┐
-                    │       CLIENT        │
-                    │  (curl / UI / app)  │
-                    └─────────┬───────────┘
-                              │
-                              ▼
-                    ┌─────────────────────┐
-                    │     API SERVER      │
-                    │  (Go + Gin/Fiber)  │
-                    └─────────┬───────────┘
-                              │
-                              ▼
-              ┌──────────────────────────────────┐
-              │             REDIS                │
-              │                                  │
-              │  high_priority_queue             │
-              │  medium_priority_queue           │
-              │  low_priority_queue              │
-              │                                  │
-              │  processing_high                 │
-              │  processing_medium               │
-              │  processing_low                  │
-              │                                  │
-              │  dead_letter_queue               │
-              │                                  │
-              │  worker_heartbeat:<worker_id>    │
-              └──────────────┬───────────────────┘
-                             │
-        ┌────────────────────┼────────────────────┐
-        │                    │                    │
-        ▼                    ▼                    ▼
-┌──────────────┐    ┌──────────────┐    ┌──────────────┐
-│   WORKER-1   │    │   WORKER-2   │    │   WORKER-N   │
-│              │    │              │    │              │
-│ Pull jobs    │    │ Pull jobs    │    │ Pull jobs    │
-│ Execute cmd  │    │ Execute cmd  │    │ Execute cmd  │
-│ Retry / DLQ  │    │ Retry / DLQ  │    │ Retry / DLQ  │
-└──────┬───────┘    └──────┬───────┘    └──────┬───────┘
-       │                   │                   │
-       └──────────────┬────┴──────────────┬────┘
-                      ▼                   ▼
-                ┌────────────────────────────┐
-                │      JOB EXECUTION         │
-                │   (Shell / OS commands)    │
-                └────────────────────────────┘
-
-
-                    ┌─────────────────────┐
-                    │     AUTO-SCALER     │
-                    │  (Go service)       │
-                    │                     │
-                    │ Reads Redis queue   │
-                    │ Decides worker cnt  │
-                    │ docker scale up/down│
-                    └─────────────────────┘
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/8e735a61-b912-44d7-bf15-cbbca9631951" />
 
 🧰 Tech Stack
 	•	Backend: Go (Golang)

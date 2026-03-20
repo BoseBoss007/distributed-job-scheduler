@@ -37,9 +37,8 @@ It mimics systems like **Kubernetes Job Controllers** and **message queue system
 
 ## 🏗️ Architecture
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/8e735a61-b912-44d7-bf15-cbbca9631951" alt="Architecture Diagram" width="800"/>
-</p>
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/95b93cc9-0415-404d-8640-501d8b83f451" />
+
 
 ---
 
